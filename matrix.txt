@@ -1,0 +1,72 @@
+/*sum of primary & secondary diagonal of a matrix using array of pointers*/
+#include<stdio.h>
+#include<malloc.h>
+void main()
+{
+int i,j,m,n,d1=0,d2=0, sum=0;
+int (*p)[3];
+
+printf("Enter row and column\n");
+scanf("%d%d",&m,&n);
+
+if(m!=n)
+{
+ 	 printf("not a square matrix\n");
+ 	 return;
+}
+
+p=(int*)malloc(m*n*sizeof(int));
+
+printf("Enter matrix elements\n");
+for(i=0;i<m;i++)
+  for(j=0;j<n;j++)
+  		  scanf("%d",*(p+i)+j);
+
+for(i=0;i<m;i++)
+  	  d1=d1+*(*(p+i)+i);
+
+for(i=0,j=(n-1);i<m;i++,j--)
+  	 d2=d2+*(*(p+i)+j);
+
+for(i=0;i<m;i++)
+ 	 for(j=0;j<n;j++)
+   		  sum+= *(*(p+i)+j));
+
+printf("the primary matrix is = %d\n",d1);
+printf("the secondary matrix is = %d\n",d2);
+printf("the sum of all elements is = %d\n",sum);
+}
+
+OUTPUT:
+1) Enter row and column
+   2
+   3
+   not a square matrix
+
+2)  Enter row and column
+   3
+   3
+   Enter matrix elements
+   2
+   3
+   1
+   4
+   5
+   6
+   7
+   8
+   9
+   the primary matrix is = 16
+   the secondary matrix is = 13
+   the sum of all elements is = 45
+3) Enter row and column
+   2
+   2
+   Enter matrix elements
+   1 
+   1
+   1
+   1
+   the primary matrix is = 2
+   the secondary matrix is = 2
+   the sum of all elements is = 4
